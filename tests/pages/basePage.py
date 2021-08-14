@@ -1,6 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BasePage():
@@ -11,6 +9,7 @@ class BasePage():
         self.driver.set_page_load_timeout(30)
         self.pageUrl=""
         self.pageTitle="Madison Island"
+        
 
     def navigate(self) -> 'BasePage':
         url = "/".join([self.baseUrl, self.pageUrl])
