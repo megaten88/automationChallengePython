@@ -54,5 +54,5 @@ class RegisterPage(BasePage):
 
     def clickSubmit(self):
         self.getSubmitButton().click()
-        WebDriverWait(self.driver, 10).until(expc.url_changes(self.baseUrl + "/" + self.pageUrl))
+        WebDriverWait(self.driver, 10).until(expc.url_changes(self.getFullUrl()))
 

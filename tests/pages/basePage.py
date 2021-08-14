@@ -4,9 +4,8 @@ from selenium import webdriver
 class BasePage():
     baseUrl = "http://magento-demo.lexiconn.com"
 
-    def __init__(self):
-        self.driver = webdriver.Chrome()
-        self.driver.set_page_load_timeout(30)
+    def __init__(self, driver:webdriver):
+        self.driver = driver
         self.pageUrl=""
         self.pageTitle="Madison Island"
         
@@ -15,7 +14,11 @@ class BasePage():
         url = "/".join([self.baseUrl, self.pageUrl])
         self.driver.get(url)
         return self
-    
+
+    def getFullUrl(self):
+        url = "/".join([self.baseUrl, self.pageUrl])
+        return url
+        
     def getDriverTitle(self):
         return self.driver.title
 

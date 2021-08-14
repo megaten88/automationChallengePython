@@ -9,6 +9,7 @@ pytest = "*"
 pytest-bdd = "*"
 faker = "*"
 pytest-html = "*"
+webdriver-manager = "*"
 
 [dev-packages]
 
