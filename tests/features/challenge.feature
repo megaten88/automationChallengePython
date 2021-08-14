@@ -1,4 +1,11 @@
 Scenario: Create Account on Page
     Given The automation challenge homepage
-    When I create a user Account
-    Then I should see my data on Contact Information section
+    When User creates a user Account
+    Then User should see their data on Contact Information section
+
+Scenario: Search for a product
+    Given The automation challenge homepage
+    And An existing user
+    When The user searches for a desired product "product"
+    And Goes into the "product" details page
+    Then The user should be in correct detail page
