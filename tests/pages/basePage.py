@@ -5,19 +5,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class BasePage():
     baseUrl = "http://magento-demo.lexiconn.com"
-    
+
     def __init__(self):
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(10)
-        self.driver.maximize_window()
-        self.driver.get(self.baseUrl)
+        self.driver.set_page_load_timeout(30)
+        self.pageUrl=""
+        self.pageTitle="Madison Island"
 
-    def navigate(self,addUrl) -> 'BasePage':
-        url = "/".join([self.baseUrl, addUrl])
+    def navigate(self) -> 'BasePage':
+        url = "/".join([self.baseUrl, self.pageUrl])
         self.driver.get(url)
         return self
     
-    def tear(self):
-        self.driver.close()
-        self.driver.quit()
-    
+    def getDriverTitle(self):
+        return self.driver.title
+
+    def getPageTitle(self):
+        return self.pageTitle

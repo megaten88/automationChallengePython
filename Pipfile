@@ -8,6 +8,7 @@ selenium = "*"
 pytest = "*"
 pytest-bdd = "*"
 faker = "*"
+pytest-html = "*"
 
 [dev-packages]
 
