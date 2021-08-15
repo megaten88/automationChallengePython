@@ -2,7 +2,6 @@ from pages.basePage import BasePage
 from pages.locators import Locators
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as expc
 
 class RegisterPage(BasePage):
@@ -54,5 +53,5 @@ class RegisterPage(BasePage):
 
     def clickSubmit(self):
         self.getSubmitButton().click()
-        WebDriverWait(self.driver, 10).until(expc.url_changes(self.getFullUrl()))
+        self.wait.until(expc.url_changes(self.getFullUrl()))
 
