@@ -16,7 +16,10 @@ class AccountInfoPage(BasePage):
         self.contactInfo = self.driver.find_element(By.XPATH, Locators.contactInfoTitle)
         return self.contactInfo
     
-    def getPersonalBox(self,name,lastname):
+    def getPersonalBox(self,name,lastname) -> WebElement:
         self.personalBox = self.driver.find_element(By.XPATH, Locators.getLocatorBoxName(name,lastname))
         return self.personalBox
+
+    def getText(self):
+        return self.personalBox.text
     

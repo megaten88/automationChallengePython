@@ -2,9 +2,11 @@ import pytest
 from pytest_bdd.types import THEN
 from pages.registerPage import RegisterPage
 from pages.homePage import HomePage
+from pages.accountInfoPage import AccountInfoPage
 from faker import Faker
 from pytest_bdd import given, when, then
 import json
+import re
 
 
 fake = Faker(['en_US', 'pt_BR', 'fr_FR', 'de_DE'])
@@ -32,7 +34,6 @@ def createUser(browser):
     registerPage.setEmail(createUser["email"])
     registerPage.setPassword(createUser["password"])
     registerPage.setConfirmPassword(createUser["password"])
-    print(open)
     with open('userData.json', 'w+') as datafile:
         json.dump(createUser, datafile)
         datafile.close()
@@ -42,5 +43,13 @@ def createUser(browser):
 #Then Steps
 @then("User should see their data on Contact Information section")
 def checkInfo(browser):
-    
-    pass
+    accountInfo = AccountInfoPage(browser)
+    assert(accountInfo.getDriverTitle() == accountInfo.getPageTitle())
+    assert(accountInfo.getContactInfo().text == "CONTACT INFORMATION")
+    data = None
+    with open("userData.json") as datafile:
+        data = json.load(datafile)
+    accountInfo.getPersonalBox(data["firstname"], data["lastname"])
+    results = re.search("([\w ]*)\\n([\w\d.-@]*)\\nChange Password", accountInfo.getText())
+    assert results[1] == f"{data['firstname']} {data['lastname']}" 
+    assert results[2] == data["email"]

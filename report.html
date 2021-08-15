@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 14-Aug-2021 at 16:18:20 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 14-Aug-2021 at 18:19:35 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +259,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.10</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 8.64 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>1 tests ran in 9.86 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -271,16 +271,15 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
+      <tbody class="passed results-table-row">
         <tr>
-          <td class="col-result">Failed</td>
+          <td class="col-result">Passed</td>
           <td class="col-name">tests/test_challenge.py::test_create_account_on_page</td>
-          <td class="col-duration">7.30</td>
+          <td class="col-duration">8.89</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">request = &lt;FixtureRequest for &lt;Function test_create_account_on_page&gt;&gt;<br/><br/>    @pytest.mark.usefixtures(*function_args)<br/>    def scenario_wrapper(request):<br/>&gt;       _execute_scenario(feature, scenario, request)<br/><br/>../../../.local/share/virtualenvs/automationChallengePython-Uv-blAPc/lib/python3.8/site-packages/pytest_bdd/scenario.py:165: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>../../../.local/share/virtualenvs/automationChallengePython-Uv-blAPc/lib/python3.8/site-packages/pytest_bdd/scenario.py:136: in _execute_scenario<br/>    _execute_step_function(request, scenario, step, step_func)<br/>../../../.local/share/virtualenvs/automationChallengePython-Uv-blAPc/lib/python3.8/site-packages/pytest_bdd/scenario.py:106: in _execute_step_function<br/>    return_value = step_func(**kwargs)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;6f56f1c70976bf1ad1564f306270ca0f&quot;)&gt;<br/><br/>    @when(&quot;User creates a user Account&quot;)<br/>    def createUser(browser):<br/>        createUser = {&quot;firstname&quot;: fake.first_name(), &quot;lastname&quot;: fake.last_name(), &quot;email&quot;: fake.email(domain=&quot;yopmail.com&quot;), &quot;password&quot;: &quot;Tester123!&quot;}<br/>        homePage = HomePage(browser)<br/>        homePage.clickAccount()<br/>        homePage.clickRegister()<br/>        registerPage = RegisterPage(browser)<br/>        assert(registerPage.getDriverTitle() == registerPage.getPageTitle())<br/>        registerPage.setFirstName(createUser[&quot;firstname&quot;])<br/>        registerPage.setLastName(createUser[&quot;lastname&quot;])<br/>        registerPage.setEmail(createUser[&quot;email&quot;])<br/>        registerPage.setPassword(createUser[&quot;password&quot;])<br/>        registerPage.setConfirmPassword(createUser[&quot;password&quot;])<br/>        print(open)<br/>&gt;       with(open, &#x27;../userData.json&#x27;, &#x27;w&#x27;) as datafile:<br/><span class="error">E       AttributeError: __enter__</span><br/><br/>tests/step_defs/challenge_steps.py:36: AttributeError<br/> ------------------------------Captured stdout call------------------------------ <br/>&lt;built-in function open&gt;
-<br/> ------------------------------Captured stderr call------------------------------ <br/>
+            <div class="log"> ------------------------------Captured stderr call------------------------------ <br/>
 
 ====== WebDriver manager ======
 Current google-chrome version is 92.0.4515
