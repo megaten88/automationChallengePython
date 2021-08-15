@@ -19,4 +19,48 @@ To run the project, pipenv is recommended.
     pip install pipenv
 ```  
   
-All dependencies are available in Pipfile, run the command `pipenv install` to install them.
+All dependencies are available in Pipfile, run the command `pipenv install` to install them.  
+Once installation is done, run:
+
+```Bash
+    pipenv shell
+```
+
+## Project Structure
+The project structure is design to follow a *Page Object Model* and *BDD*.
+
+```
+.
+|-- assets
+|   `-- style.css
+|-- tests
+|   |-- features
+|   |   `-- challenge.feature
+|   |-- pages
+|   |   |-- accountInfoPage.py
+|   |   |-- basePage.py
+|   |   |-- homePage.py
+|   |   |-- __init__.py
+|   |   |-- locators.py
+|   |   |-- loginPage.py
+|   |   `-- registerPage.py
+|   |-- step_defs
+|   |   |-- challenge_steps.py
+|   |   `-- __init__.py
+|   `-- test_challenge.py
+|-- Pipfile
+|-- Pipfile.lock
+|-- README.md
+|-- report.html
+`-- userData.json
+
+```
+
+### Run Project
+
+To run the project, be sure to have install all dependencies with `pipenv`.
+Once that is done, run:  
+
+```Bash
+    pipenv shell
+```
