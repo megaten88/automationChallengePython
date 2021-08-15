@@ -29,8 +29,10 @@ class HomePage(BasePage):
     def clickRegister(self):
         register: WebElement = self.wait.until(expc.element_to_be_clickable((By.XPATH,Locators.register)))
         register.click()
+        self.wait.until(expc.url_changes(self.getFullUrl()))
 
     def clickLogin(self):
         login: WebElement = self.wait.until(expc.element_to_be_clickable((By.XPATH,Locators.login)))
         login.click()
+        self.wait.until(expc.url_changes(self.getFullUrl()))
 

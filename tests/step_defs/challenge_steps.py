@@ -1,9 +1,8 @@
-from pages.loginPage import LoginPage
 import pytest
-from pytest_bdd.types import THEN
 from pages.registerPage import RegisterPage
 from pages.homePage import HomePage
 from pages.accountInfoPage import AccountInfoPage
+from pages.loginPage import LoginPage
 from faker import Faker
 from pytest_bdd import given, when, then
 import json
@@ -28,7 +27,7 @@ def loginUser(browser):
         with open("userData.json") as datafile:
             user = json.load(datafile)
     except:
-        pytest.raises(ImportError)
+        pass
     assert(user["firstname"] !=None )
     assert(user["lastname"] !=None )
     assert(user["email"]!=None )
@@ -36,12 +35,12 @@ def loginUser(browser):
     homePage.clickAccount()
     homePage.clickLogin()
     loginPage = LoginPage(browser)
-    assert(loginPage.getDriverTitle == loginPage.getDriverTitle())
+    assert(loginPage.getDriverTitle() == loginPage.getPageTitle())
     assert(loginPage.driver.current_url == loginPage.getFullUrl())
     loginPage.setEmail(user["email"])
     loginPage.setPassword(user["password"])
-    loginPage.submitButton()
-    assert(loginPage.driver.current_url == "http://magento-demo.lexiconn.com/customer/account")
+    loginPage.clickSubmit()
+    assert(loginPage.driver.current_url == "http://magento-demo.lexiconn.com/customer/account/")
 
 #When Steps
 @when("User creates a user Account")
@@ -65,6 +64,23 @@ def createUser(browser):
         json.dump(createUser, datafile)
         datafile.close()
     registerPage.clickSubmit()
+
+@when('The user searches for a desired product <product>')
+def searchProduct(browser,product:str):
+    #Start from logged user page
+    loggedUserPage = AccountInfoPage(browser)
+    assert(loggedUserPage.getDriverTitle() == loggedUserPage.getPageTitle())
+    loggedUserPage.search(product)
+    assert(loggedUserPage.getProductsLen()>0)
+
+@when('Goes into the <product> details page')
+def viewDetails(browser,product:str):
+    loggedUserPage = AccountInfoPage(browser)
+    loggedUserPage.getProduct(product)
+    desiredProduct = loggedUserPage.getProductUrl()
+    loggedUserPage.viewDetails()
+    assert(loggedUserPage.driver.current_url == desiredProduct)
+
     
 
 #Then Steps
@@ -83,3 +99,9 @@ def checkInfo(browser):
     # Compare User Data
     assert results[1] == f"{data['firstname']} {data['lastname']}" 
     assert results[2] == data["email"]
+
+@then('The user should be in correct <product> detail page')
+def checkDetails(browser,product:str):
+    loggedUserPage = AccountInfoPage(browser)
+    assert(loggedUserPage.getDriverTitle() == product.strip())
+

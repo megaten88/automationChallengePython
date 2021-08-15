@@ -1,4 +1,3 @@
-from _typeshed import Self
 from selenium import webdriver
 from pages.locators import Locators
 from selenium.webdriver.common.by import By
@@ -33,23 +32,29 @@ class BasePage():
 
     def search(self, product:str):
         self.searchBar: WebElement = self.driver.find_element(By.ID,Locators.searchBar)
-        self.searchButton: WebElement = self.driver.find_element(By.ID, Locators.searchButton)
+        self.searchButton: WebElement = self.driver.find_element(By.CSS_SELECTOR, Locators.searchButton)
         self.searchBar.send_keys(product)
         self.searchButton.click()
         self.wait.until(expc.url_changes(self.getFullUrl()))
+        self.product = self.driver.find_element(By.XPATH, Locators.selectProduct(product))
 
     def getProductsLen(self) -> int: 
-        self.productGrid: WebElement = self.wait.until(expc.visibility_of((By.CSS_SELECTOR,Locators.productsGrid)))
+        self.productGrid: WebElement = self.wait.until(expc.element_to_be_clickable((By.CSS_SELECTOR,Locators.productsGrid)))
         self.products = self.driver.find_elements(By.XPATH, Locators.products)
         return len(self.products)
 
     def getProduct(self, product:str) -> WebElement:
         self.product = self.driver.find_element(By.XPATH, Locators.selectProduct(product))
+        self.productUrl = self.product.get_attribute("href")
         return self.product
 
+    def getProductUrl(self):
+        return self.productUrl
+
     def viewDetails(self):
-        self.details: WebElement = self.driver.find_element(By.XPATH, Locators.getViewDetailsButton(self.product.get_attribute("href")))
+        self.details: WebElement = self.driver.find_element(By.XPATH, Locators.getViewDetailsButton(self.productUrl))
         self.details.click()
-        self.wait.until(expc.url_to_be(self.product.get_attribute("href")))
+        self.wait.until(expc.url_to_be(self.productUrl))
+
         
     
