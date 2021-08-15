@@ -64,3 +64,16 @@ Once that is done, run:
 ```Bash
     pipenv shell
 ```
+
+and run pytest:  
+
+```Bash
+    pytest -v tests/test_challenge.py
+```  
+
+There's also the `pytest-html` module that can generate the report.  
+To generate the report:
+
+```Bash
+    pytest -v tests/test_challenge.py --html=report.html
+```
