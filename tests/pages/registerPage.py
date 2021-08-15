@@ -8,7 +8,7 @@ class RegisterPage(BasePage):
     
     def __init__(self,driver):
         super().__init__(driver)
-        self.pageUrl="customer/account/create"
+        self.pageUrl="customer/account/create/"
         self.pageTitle="Create New Customer Account"
     
     # Getters in case needed
