@@ -8,7 +8,8 @@ Technologies used:
 - pytest
 - pytest-BDD
 - pytest-html
-- webDriver-manager 
+- webDriver-manager
+- faker 
 - pipenv  
 
 ## Install PipEnv
