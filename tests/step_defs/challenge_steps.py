@@ -27,7 +27,8 @@ def loginUser(browser):
         with open("userData.json") as datafile:
             user = json.load(datafile)
     except:
-        pass
+        print("No userData.json found")
+        pytest.exit("No userData.json found")
     assert(user["firstname"] !=None )
     assert(user["lastname"] !=None )
     assert(user["email"]!=None )
@@ -60,9 +61,13 @@ def createUser(browser):
     registerPage.setConfirmPassword(createUser["password"])
 
     # Save User Data for Next Scenario and Steps
-    with open('userData.json', 'w+') as datafile:
-        json.dump(createUser, datafile)
+    try:
+        with open('userData.json', 'w+') as datafile:
+            json.dump(createUser, datafile)
         datafile.close()
+    except:
+        pytest.exit("Could not write into userData.json")
+        
     registerPage.clickSubmit()
 
 @when('The user searches for a desired product <product>')
@@ -92,8 +97,13 @@ def checkInfo(browser):
     assert(accountInfo.getContactInfo().text == "CONTACT INFORMATION")
     data = None
     #Load User Data
-    with open("userData.json") as datafile:
-        data = json.load(datafile)
+    try:
+        with open("userData.json") as datafile:
+            data = json.load(datafile)
+    except:
+        print("No userData.json found")
+        pytest.exit("No userData.json found")
+    
     accountInfo.getPersonalBox(data["firstname"], data["lastname"])
     results = re.search("([\w ]*)\\n([\w\d.-@]*)\\nChange Password", accountInfo.getText())
     # Compare User Data
