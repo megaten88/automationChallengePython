@@ -20,11 +20,10 @@ To run the project, pipenv is recommended.
     pip install pipenv
 ```  
   
-All dependencies are available in Pipfile, run the command `pipenv install` to install them.  
-Once installation is done, run:
+All dependencies are available in Pipfile, run the command `pipenv install` on the project directory to install them.  
 
 ```Bash
-    pipenv shell
+    pipenv install
 ```
 
 ## Project Structure
